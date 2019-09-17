@@ -1,6 +1,10 @@
-# teste
+# The issue:
 
-> My awesome Nuxt.js project
+> Drawer disappears when using more than 2 cards in given template.
+
+# How i test this issue:
+
+> I created two pages, one ("/") where there are 4 cards and the drawer disappeared, and another ("/inspire") where I use 2 cards and the drawer remains.
 
 ## Build Setup
 
