@@ -1,10 +1,10 @@
 # The issue:
 
-> Drawer disappears when using more than 2 cards in given template.
+> Drawer disappears when using many cards in given template.
 
 # How i test this issue:
 
-> I created two pages, one ("/") where there are 4 cards and the drawer disappeared, and another ("/inspire") where I use 2 cards and the drawer remains.
+> I created a page where you can increase the card number until the drawer disappears.
 
 ## Build Setup
 
