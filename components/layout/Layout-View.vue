@@ -2,7 +2,7 @@
   VContent#content_div
     VLayout#layout-view.ma-4.row.wrap
       VFlex.xs12(light)
-        h1(v-t="`routes.${$route.name}`")
+        h1(v-t="`routes.${$route.name}`" style="color:black")
 
       VFadeTransition(mode="out-in")
         VContainer.pt-2(

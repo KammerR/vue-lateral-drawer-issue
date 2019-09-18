@@ -7,31 +7,13 @@
         tile
       )
         VToolbar(dense)
-          VTooltip(top)
-            template(v-slot:activator="{ on }")
-              VBtn(text v-on="on" disabled)
-                VIcon mdi-note-plus
-                | &nbsp;New Job
-            span New Job
-
-          div
-            VTooltip(top)
-              template(v-slot:activator="{ on }")
-                VBtn(
-                  text
-                  v-on="on"
-                )
-                  VIcon mdi-cloud-download
-              span Import
-
-            VTooltip(top)
-              template(v-slot:activator="{ on }")
-                VBtn(
-                  text
-                  v-on="on"
-                )
-                  VIcon mdi-cloud-sync
-              span Sync
+          VTextField(
+            v-model="jobsCounter"
+            type="number"
+            label="Number of Cards"
+            required
+            style="margin-bottom: -2em"
+          )
 
           VSpacer
 
@@ -46,28 +28,6 @@
                 VCardText.black--text
                   div.headline(style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;") {{ job.name }}
                   div.caption @{{ job.company_name }}
-                VCardText
-                  VLayout.row.wrap
-                    VFlex.xs3(v-for="s,idx in statusIcons" :key="idx")
-                      VTooltip(top)
-                        template(v-slot:activator="{ on }")
-                          VBtn(text v-on="on" color="grey")
-                            VIcon {{ s.icon}}
-                            span.title &nbsp; 0
-                        span.caption {{ "Hint" }}
-                VCardActions
-                  VBtn(
-                    v-t="'general.open'"
-                    color="primary"
-                    text
-                  )
-
-                  VBtn(
-                    v-if="!job.defaultJob"
-                    v-t="'jobs.make_default'"
-                    color="primary"
-                    text
-                  )
 </template>
 
 <script>
@@ -100,28 +60,30 @@ export default {
           hint: 'jobs.hint_win'
         }
       ],
-      jobs: [
-        {
-          company_name: 'A company',
-          name: 'Developer',
-          _id: '1'
-        },
-        {
-          company_name: 'Another Company',
-          name: 'Designer',
-          _id: '2'
-        },
-        {
-          company_name: 'Oh, another Company xD',
-          name: 'Tester',
-          _id: '3'
-        },
-        {
-          company_name: 'This is not a Company',
-          name: 'Recruiter',
-          _id: '4'
+      jobsCounter: 2
+    }
+  },
+
+  computed: {
+    jobs() {
+      const jobs = []
+
+      for (let index = 0; index < this.jobsCounter; index++) {
+        const random = Math.random()
+          .toString(36)
+          .replace(/[^a-z]+/g, '')
+          .substr(0, 5)
+
+        const job = {
+          company_name: random,
+          name: random,
+          _id: random
         }
-      ]
+
+        jobs.push(job)
+      }
+
+      return jobs
     }
   }
 }
