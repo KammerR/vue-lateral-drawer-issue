@@ -1,6 +1,10 @@
-# teste
+# The issue:
 
-> My awesome Nuxt.js project
+> Drawer disappears when using many cards in given template.
+
+# How i test this issue:
+
+> I created a page where you can increase the card number until the drawer disappears.
 
 ## Build Setup
 
